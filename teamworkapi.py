@@ -57,6 +57,10 @@ class RequestBuilder(object):
         self.client = client
         self.url = ''
 
+    def id(self, id):
+        self.url += '/' + str(id)
+        return self
+
     def __getattr__(self, key):
         if key in self.client.http_methods:
             mfun = getattr(self.client, key)
